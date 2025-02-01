@@ -19,3 +19,7 @@ function calcAge(year) {
 }
 
 console.log(calcAge(2023));
+
+// [2, 3, 4, 5, 6].forEach(
+//   (num) => (document.querySelector('p').textContent += num + ' ')
+// );
