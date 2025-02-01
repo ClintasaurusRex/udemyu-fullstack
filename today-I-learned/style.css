@@ -8,14 +8,13 @@ body {
   background-color: #292524;
   color: #fafaf9;
   font-family: 'sono', sans-serif;
-  padding: 40px;
+  padding: 48px 64px;
 }
 
 /* Main Layout */
 
 .container {
-  max-width: 1000px;
-  background-color: orangered;
+  max-width: 1500px;
   margin: 0 auto;
   /* this is the same as above margin 0 auto */
   /* margin-left: auto;
@@ -50,6 +49,11 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.logo img {
+  width: 68px;
+  height: 68px;
 }
 
 h1 {
@@ -93,4 +97,34 @@ h1 {
 
 ul {
   list-style: none;
+}
+
+.source:link,
+.source:visited {
+  color: #a8a29e;
+  text-decoration: none;
+  margin-left: 12px;
+  transition: 0.3s;
+}
+
+/* .source:visited {
+  color: purple;
+} */
+
+.source:hover,
+.source:active {
+  color: #3b82f6;
+}
+/* .source:active {
+  color: green;
+} */
+
+.btn {
+  border: none;
+  font-family: 'Coiny', sans-serif;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 17px;
+  padding: 13px 0 16px;
+  background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
 }
