@@ -52,9 +52,27 @@ const factsList = document.querySelector('.facts-list');
 // Create DOM elements: Render facts in list
 factsList.innerHTML = '';
 
-// factsList.insertAdjacentHTML('afterbegin', '<li>Clint</>');
+// Load data from supabase
 
-createFactsList(initialFacts);
+async function loadFacts() {
+  const res = await fetch(
+    'https://hhedmupgupwvjrohkvhr.supabase.co/rest/v1/facts',
+    {
+      headers: {
+        apikey:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoZWRtdXBndXB3dmpyb2hrdmhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0NDc3MjksImV4cCI6MjA1NDAyMzcyOX0.0WPZbEbxZw4h_mAselhuKhGQ_PP1P6lZ7i4XCT2hM_E',
+        authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoZWRtdXBndXB3dmpyb2hrdmhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0NDc3MjksImV4cCI6MjA1NDAyMzcyOX0.0WPZbEbxZw4h_mAselhuKhGQ_PP1P6lZ7i4XCT2hM_E',
+      },
+    }
+  );
+  const data = await res.json();
+  console.log(data);
+
+  createFactsList(data);
+}
+loadFacts();
+// createFactsList(initialFacts);
 // createFactsList([{ text: 'Jonas' }]);
 
 function createFactsList(dataArray) {
