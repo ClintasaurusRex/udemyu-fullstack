@@ -61,7 +61,6 @@ const initialFacts = [
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-
   const handleShowForm = function () {
     setShowForm((show) => !show);
   };
@@ -69,6 +68,25 @@ function App() {
   return (
     <>
       {/* Header */}
+      <Header
+        showForm={showForm}
+        setShowForm={setShowForm}
+        handleShowForm={handleShowForm}
+      />
+
+      {showForm ? <NewFactForm /> : null}
+
+      <main className='main'>
+        <CategoryFilter />
+        <FactList />
+      </main>
+    </>
+  );
+}
+
+function Header({ showForm, setShowForm, handleShowForm }) {
+  return (
+    <>
       <header className='header'>
         <div className='logo'>
           <img
@@ -81,16 +99,9 @@ function App() {
         </div>
 
         <button className='btn btn-large btn-open' onClick={handleShowForm}>
-          Share a fact
+          {showForm ? 'Close' : 'Share a fact'}
         </button>
       </header>
-
-      {showForm ? <NewFactForm /> : null}
-
-      <main className='main'>
-        <CategoryFilter />
-        <FactList />
-      </main>
     </>
   );
 }
