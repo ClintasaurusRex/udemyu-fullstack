@@ -67,7 +67,8 @@ async function loadFacts() {
     }
   );
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
+  // const filteredData = data.filter((fact) => fact.category === 'society');
 
   createFactsList(data);
 }
@@ -90,7 +91,9 @@ function createFactsList(dataArray) {
                 </p>
                 <span
                   class="tag"
-                  style="background-color: #3b82f6"
+                  style="background-color: ${
+                    CATEGORIES.find((cat) => cat.name === fact.category).color
+                  }"
                   >${fact.category}</span
                 
                 </li>`
@@ -111,6 +114,9 @@ btn.addEventListener('click', function () {
     btn.textContent = 'Share a fact';
   }
 });
+
+console.log([7, 64, 6, -23, 11].filter((el) => el > 10));
+console.log([7, 64, 6, -23, 11].find((el) => el > 10));
 
 /* function calcAge(year) {
   const age = 2024 - year;
