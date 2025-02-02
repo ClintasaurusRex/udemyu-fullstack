@@ -35,31 +35,37 @@ const initialFacts = [
   },
 ];
 
-function Counter() {
-  const [count, setCount] = useState(0);
+// function Counter() {
+//   const [count, setCount] = useState(0);
 
-  const handleClick = function () {
-    setCount(count + 1);
-  };
+//   const handleClick = function () {
+//     setCount(count + 1);
+//   };
 
-  const handleReset = function () {
-    setCount(0);
-  };
+//   const handleReset = function () {
+//     setCount(0);
+//   };
 
-  return (
-    <div>
-      <span style={{ fontSize: '40px' }}>{count}</span>
-      <button className='btn btn-large' onClick={handleClick}>
-        +1
-      </button>
-      <button className='btn btn-large' onClick={handleReset}>
-        Reset
-      </button>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <span style={{ fontSize: '40px' }}>{count}</span>
+//       <button className='btn btn-large' onClick={handleClick}>
+//         +1
+//       </button>
+//       <button className='btn btn-large' onClick={handleReset}>
+//         Reset
+//       </button>
+//     </div>
+//   );
+// }
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleShowForm = function () {
+    setShowForm((show) => !show);
+  };
+
   return (
     <>
       {/* Header */}
@@ -74,11 +80,13 @@ function App() {
           <h1>Today I Learned</h1>
         </div>
 
-        <button className='btn btn-large btn-open'>Share a fact</button>
+        <button className='btn btn-large btn-open' onClick={handleShowForm}>
+          Share a fact
+        </button>
       </header>
-      <Counter />
 
-      <NewFactForm />
+      {showForm ? <NewFactForm /> : null}
+
       <main className='main'>
         <CategoryFilter />
         <FactList />
@@ -116,6 +124,7 @@ function CategoryFilter() {
         {CATEGORIES.map((cat) => (
           <li key={cat.name} className='category'>
             <button
+              onClick={() => console.log('click')}
               className='btn btn-category'
               style={{ backgroundColor: cat.color }}
             >
