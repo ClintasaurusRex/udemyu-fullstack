@@ -77,11 +77,7 @@ function App() {
       />
 
       {showForm ? (
-        <NewFactForm
-          setFacts={setFacts}
-          showForm={showForm}
-          setShowForm={setShowForm}
-        />
+        <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
       ) : null}
 
       <main className='main'>
@@ -137,7 +133,7 @@ function isValidHttpUrl(string) {
   return url.protocol === 'http:' || url.protocol === 'https:';
 }
 
-function NewFactForm({ setFacts, showForm, setShowForm }) {
+function NewFactForm({ setFacts, setShowForm }) {
   const [text, setText] = useState('');
   const [source, setSource] = useState('https://example.com');
   const [category, setCategory] = useState('');
