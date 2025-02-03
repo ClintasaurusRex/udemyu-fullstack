@@ -35,30 +35,6 @@ const initialFacts = [
   },
 ];
 
-// function Counter() {
-//   const [count, setCount] = useState(0);
-
-//   const handleClick = function () {
-//     setCount(count + 1);
-//   };
-
-//   const handleReset = function () {
-//     setCount(0);
-//   };
-
-//   return (
-//     <div>
-//       <span style={{ fontSize: '40px' }}>{count}</span>
-//       <button className='btn btn-large' onClick={handleClick}>
-//         +1
-//       </button>
-//       <button className='btn btn-large' onClick={handleReset}>
-//         Reset
-//       </button>
-//     </div>
-//   );
-// }
-
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState(initialFacts);
