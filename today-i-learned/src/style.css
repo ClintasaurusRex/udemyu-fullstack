@@ -240,7 +240,7 @@ ul {
   }
   .fact-form span {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   .fact-form input,

@@ -84,7 +84,7 @@ function App() {
   );
 }
 
-function Header({ showForm, setShowForm, handleShowForm }) {
+function Header({ showForm, handleShowForm }) {
   return (
     <>
       <header className='header'>
@@ -106,14 +106,6 @@ function Header({ showForm, setShowForm, handleShowForm }) {
   );
 }
 
-function NewFactForm() {
-  return (
-    <form action='' className='fact-form'>
-      Fact Form
-    </form>
-  );
-}
-
 const CATEGORIES = [
   { name: 'technology', color: '#3b82f6' },
   { name: 'science', color: '#16a34a' },
@@ -124,6 +116,55 @@ const CATEGORIES = [
   { name: 'history', color: '#f97316' },
   { name: 'news', color: '#8b5cf6' },
 ];
+
+function NewFactForm() {
+  const [text, setText] = useState('');
+  const [source, setSource] = useState('');
+  const [category, setCategory] = useState('');
+  const textLength = text.length;
+
+  const handleSubmit = function (e) {
+    e.preventDefault();
+    console.log(text, source, category);
+  };
+
+  return (
+    <form action='' className='fact-form ' onSubmit={handleSubmit}>
+      <input
+        type='text'
+        placeholder='Share a fact with the world...'
+        value={text}
+        onChange={(e) => {
+          if (e.target.value.length <= 200) {
+            setText(e.target.value);
+            return;
+          }
+          alert('Ran out of characters');
+        }}
+      />
+      <span>{200 - textLength}</span>
+      <input
+        type='text'
+        placeholder='Trustworthy source...'
+        value={source}
+        onChange={(e) => setSource(e.target.value)}
+      />
+      <select
+        type='option'
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        <option value=''>Choose Category</option>
+        {CATEGORIES.map((cat) => (
+          <option key={cat.name} value={cat.name}>
+            {cat.name.toUpperCase()}
+          </option>
+        ))}
+      </select>
+      <button className='btn btn-large'>Post</button>
+    </form>
+  );
+}
 
 function CategoryFilter() {
   return (
