@@ -117,15 +117,54 @@ const CATEGORIES = [
   { name: 'news', color: '#8b5cf6' },
 ];
 
+function isValidHttpUrl(string) {
+  let url;
+
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+
+  return url.protocol === 'http:' || url.protocol === 'https:';
+}
+
 function NewFactForm() {
   const [text, setText] = useState('');
-  const [source, setSource] = useState('');
+  const [source, setSource] = useState('httpsL//example.com');
   const [category, setCategory] = useState('');
   const textLength = text.length;
 
   const handleSubmit = function (e) {
+    // 1. Prevent the browser reload
     e.preventDefault();
     console.log(text, source, category);
+
+    // 2. Check if data if valid and if so create a new fact
+
+    if (text && isValidHttpUrl(source) && category && text.length <= 200) {
+      // console.log('there is valid data');
+
+      // 3. Create a new fact object
+
+      const newFact = {
+        id: Math.round(Math.random() * 10000000),
+        text,
+        source,
+
+        category,
+        votesInteresting: 0,
+        votesMindblowing: 0,
+        votesFalse: 0,
+        createdIn: new Date().getCurrentYear(),
+      };
+
+      // 4. Add new fact to the UI: Add fact to interface
+
+      // 5. Reset the input fields
+
+      // 6. Close the form
+    }
   };
 
   return (
@@ -134,13 +173,7 @@ function NewFactForm() {
         type='text'
         placeholder='Share a fact with the world...'
         value={text}
-        onChange={(e) => {
-          if (e.target.value.length <= 200) {
-            setText(e.target.value);
-            return;
-          }
-          alert('Ran out of characters');
-        }}
+        onChange={(e) => setText(e.target.value)}
       />
       <span>{200 - textLength}</span>
       <input
