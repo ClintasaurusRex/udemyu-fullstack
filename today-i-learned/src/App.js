@@ -169,7 +169,12 @@ function Fact({ fact }) {
     <li key={fact.id} className='fact'>
       <p>
         {fact.text}
-        <a className='source' href={fact.source} target='_blank'>
+        <a
+          className='source'
+          href={fact.source}
+          target='_blank'
+          rel='noreferrer'
+        >
           (Source)
         </a>
       </p>
